@@ -1,0 +1,105 @@
+package ${packageName}.controller;
+
+import ${packageName}.pojo.bo.${upperClassName}Bo;
+import ${packageName}.pojo.vo.${upperClassName}Vo;
+import ${packageName}.service.${upperClassName}Service;
+import ${packageName}.base.PageQuery;
+import ${packageName}.base.Result;
+import ${packageName}.base.ResultPage;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
+import com.chenggongdu.validate.EditGroup;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotBlank;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * ${comment} Controller
+ *
+ * @author ${author}
+ */
+@Slf4j
+@Validated
+@RestController
+@RequestMapping("/api/${lowerClassName}")
+@Tag(name = "${comment}管理模块", description = "${comment}管理模块")
+public class ${upperClassName}Controller {
+
+    @Resource
+    private ${upperClassName}Service ${lowerClassName}Service;
+
+    /**
+     * 分页查询
+     *
+     * @param pageQuery  分页对象
+     * @param ${lowerClassName}Bo ${comment}
+     * @return {@link ResultPage<${upperClassName}Vo>
+     */
+    @Operation(summary = "分页查询", description = "分页查询")
+    @PostMapping("/page")
+    public ResultPage<${upperClassName}Vo> page(@RequestBody @Validated PageQuery pageQuery,
+                                                @RequestBody @Validated ${upperClassName}Bo ${lowerClassName}Bo) {
+
+        return ResultPage.build(${lowerClassName}Service.pageByBo(pageQuery, ${lowerClassName}Bo));
+    }
+
+
+    /**
+     * 通过${pk_column_comment}查询${comment}
+     *
+     * @param ${pk_javaLowerAttrName} ${pk_column_comment}
+     * @return {@link ${upperClassName}Vo}
+     */
+    @Operation(summary = "详情", description = "通过id查询")
+    @GetMapping("/info")
+    public Result<${upperClassName}Vo> info(@RequestParam("${pk_javaLowerAttrName}") @Schema(description = "${pk_column_comment}") ${pk_javaAttrType} ${pk_javaLowerAttrName}) {
+        return Result.ok(${lowerClassName}Service.getVoById(${pk_javaLowerAttrName}));
+    }
+
+    /**
+     * 新增${comment}
+     *
+     * @param ${lowerClassName}Bo ${comment}
+     * @return {@link String} ${pk_column_comment}
+     */
+    @Operation(summary = "新增${comment}信息表", description = "新增${comment}信息表")
+    @PostMapping("/save")
+    public Result<String> save(@RequestBody @Validated ${upperClassName}Bo ${lowerClassName}Bo) {
+        ${lowerClassName}Service.saveByBo(${lowerClassName}Bo);
+        return  Result.ok(${lowerClassName}Bo.get${pk_javaUpperAttrName}());
+    }
+
+
+    /**
+     * 修改${comment}
+     *
+     * @param ${lowerClassName}Bo ${comment}
+     * @return {@link String} ${pk_column_comment}
+     */
+    @Operation(summary = "修改${comment}信息表", description = "修改${comment}信息表")
+    @PutMapping("/edit")
+    public void edit(@RequestBody @Validated({EditGroup.class}) ${upperClassName}Bo ${lowerClassName}Bo) {
+        ${lowerClassName}Service.updateByBo(${lowerClassName}Bo);
+    }
+
+
+    /**
+     * 通过${pk_column_comment}数组删除${comment}
+     *
+     * @param ${pk_javaLowerAttrName}s ${pk_column_comment}数组
+     */
+    @Operation(summary = "批量删除", description = "通过id删除${comment}")
+    @DeleteMapping("/delete")
+    public void delete(@RequestParam("${pk_javaLowerAttrName}s") @Schema(description = "${pk_column_comment}, 多个用英文逗号分割") ${pk_javaAttrType} ${pk_javaLowerAttrName}s) {
+        List<String> idList = Arrays.asList(${pk_javaLowerAttrName}s.split(StringPool.COMMA));
+        ${lowerClassName}Service.removeByIds(idList);
+    }
+}
+

@@ -1,0 +1,55 @@
+package ${packageName}.service.impl;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ${packageName}.base.PageQuery;
+import ${packageName}.convertors.${upperClassName}Convertor;
+import ${packageName}.mapper.${upperClassName}Mapper;
+import ${entityPackage}.${upperClassName};
+import ${packageName}.pojo.bo.${upperClassName}Bo;
+import ${packageName}.pojo.vo.${upperClassName}Vo;
+import ${packageName}.service.${upperClassName}Service;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+/**
+ * ${comment} Service实现类
+ *
+ * @author ${author}
+ */
+@Slf4j
+@Service
+public class ${upperClassName}ServiceImpl extends ServiceImpl<${upperClassName}Mapper, ${upperClassName}> implements ${upperClassName}Service {
+
+    @Override
+    public IPage<${upperClassName}Vo> pageByBo(PageQuery pageQuery, ${upperClassName}Bo ${lowerClassName}Bo) {
+        ${upperClassName} ${lowerClassName} = ${upperClassName}Convertor.to(${lowerClassName}Bo);
+        Page<${upperClassName}> page = this.page(pageQuery.build(), Wrappers.query(${lowerClassName}));
+        return page.convert(${upperClassName}Convertor::toVo);
+    }
+
+    @Override
+    public ${upperClassName}Vo getVoById(${pk_javaAttrType} ${pk_javaLowerAttrName}) {
+        ${upperClassName} ${lowerClassName} = this.getById(${pk_javaLowerAttrName});
+        if (${lowerClassName} == null) {
+            return null;
+        }
+        return ${upperClassName}Convertor.toVo(${lowerClassName});
+    }
+
+    @Override
+    public void updateByBo(${upperClassName}Bo ${lowerClassName}Bo) {
+        ${upperClassName} ${lowerClassName} = ${upperClassName}Convertor.to(${lowerClassName}Bo);
+        this.updateById(${lowerClassName});
+    }
+
+    @Override
+    public void saveByBo(${upperClassName}Bo ${lowerClassName}Bo) {
+        ${upperClassName} ${lowerClassName} = ${upperClassName}Convertor.to(${lowerClassName}Bo);
+        this.save(${lowerClassName});
+        ${lowerClassName}Bo.set${pk_javaUpperAttrName}(${lowerClassName}.get${pk_javaUpperAttrName}());
+    }
+}
+

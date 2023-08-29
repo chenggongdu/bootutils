@@ -1,0 +1,25 @@
+package ${packageName}.convertors;
+
+import ${entityPackage}.${upperClassName};
+import ${packageName}.pojo.bo.${upperClassName}Bo;
+import ${packageName}.pojo.vo.${upperClassName}Vo;
+import org.springframework.beans.BeanUtils;
+
+/**
+ * ${comment} 转换器
+ */
+public interface ${upperClassName}Convertor {
+
+    static ${upperClassName} to(${upperClassName}Bo ${lowerClassName}Bo) {
+        ${upperClassName} entity = new ${upperClassName}();
+        BeanUtils.copyProperties(${lowerClassName}Bo, entity);
+        return entity;
+    }
+
+    static ${upperClassName}Vo toVo(${upperClassName} ${lowerClassName}) {
+        ${upperClassName}Vo vo = new ${upperClassName}Vo();
+        BeanUtils.copyProperties(${lowerClassName}, vo);
+        return vo;
+    }
+
+}

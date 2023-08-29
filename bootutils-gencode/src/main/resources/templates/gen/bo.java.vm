@@ -1,0 +1,37 @@
+package ${packageName}.pojo.bo;
+
+import com.chenggongdu.validate.EditGroup;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+#foreach ($import in $importList)
+import ${import};
+#end
+
+/**
+ * ${comment} Bo
+ *
+ * @author ${author}
+ */
+@Data
+@Accessors(chain = true)
+@Schema(name = "${comment}入参对象", description = "${comment}入参对象")
+public class ${upperClassName}Bo {
+
+    /**
+     * ${pk_column_comment}
+     */
+    @NotBlank(message = "${pk_column_comment}不可为空", groups = {EditGroup.class})
+    @Schema(description = "${pk_column_comment}")
+    private ${pk_javaAttrType} ${pk_javaLowerAttrName};
+#foreach ($column in $columns)
+    /**
+     * $column.column_comment
+     */
+    @Schema(description = "$column.column_comment")
+    private $column.javaAttrType $column.javaLowerAttrName;
+#end
+
+}

@@ -1,0 +1,36 @@
+package ${entityPackage};
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+#foreach ($import in $importList)
+import ${import};
+#end
+
+/**
+ * ${comment} 实体对象
+ *
+ * @author ${author}
+ */
+@Data
+@TableName("${tableName}")
+@Accessors(chain = true)
+public class ${upperClassName} {
+
+    /**
+     * ${pk_column_comment}
+     */
+    @TableId("${pk_column_name}")
+    private ${pk_javaAttrType} ${pk_javaLowerAttrName};
+#foreach ($column in $columns)
+    /**
+     * $column.column_comment
+     */
+    @TableField("$column.column_name")
+    private $column.javaAttrType $column.javaLowerAttrName;
+#end
+
+}

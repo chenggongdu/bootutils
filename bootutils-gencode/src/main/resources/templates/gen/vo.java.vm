@@ -1,0 +1,32 @@
+package ${packageName}.pojo.vo;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+
+#foreach ($import in $importList)
+import ${import};
+#end
+
+/**
+ * ${comment} Bo
+ *
+ * @author ${author}
+ */
+@Data
+@Schema(name = "${comment}出参对象", description = "${comment}出参对象")
+public class ${upperClassName}Vo {
+
+    /**
+     * ${pk_column_comment}
+     */
+    @Schema(description = "${pk_column_comment}")
+    private ${pk_javaAttrType} ${pk_javaLowerAttrName};
+#foreach ($column in $columns)
+    /**
+     * $column.column_comment
+     */
+    @Schema(description = "$column.column_comment")
+    private $column.javaAttrType $column.javaLowerAttrName;
+#end
+
+}

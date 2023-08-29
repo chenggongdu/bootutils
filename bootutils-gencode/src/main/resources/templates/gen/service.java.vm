@@ -1,0 +1,25 @@
+package ${packageName}.service;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${packageName}.base.PageQuery;
+import ${entityPackage}.${upperClassName};
+import ${packageName}.pojo.bo.${upperClassName}Bo;
+import ${packageName}.pojo.vo.${upperClassName}Vo;
+
+/**
+ * ${comment} Service
+ *
+ * @author ${author}
+ */
+public interface ${upperClassName}Service extends IService<${upperClassName}> {
+
+    IPage<${upperClassName}Vo> pageByBo(PageQuery pageQuery, ${upperClassName}Bo ${lowerClassName}Bo);
+
+    ${upperClassName}Vo getVoById(${pk_javaAttrType} ${pk_javaLowerAttrName});
+
+    void updateByBo(${upperClassName}Bo ${lowerClassName}Bo);
+
+    void saveByBo(${upperClassName}Bo ${lowerClassName}Bo);
+}
+
