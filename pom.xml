@@ -53,6 +53,32 @@
         </dependency>
     </dependencies>
 
+    <!--版权许可-->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+    <!--代码库信息-->
+    <scm>
+        <connection>scm:git@github.com:chenggongdu/bootutils.git</connection>
+        <developerConnection>scm:git@github.com:chenggongdu/bootutils.git</developerConnection>
+        <url>git@github.com:chenggongdu/bootutils.git</url>
+    </scm>
+
+    <!--开发者信息-->
+    <developers>
+        <developer>
+            <name>chenggongdu</name>
+            <email>duchenggong6616@gmail.com</email>
+        </developer>
+    </developers>
+
+
     <build>
         <plugins>
             <plugin>
@@ -83,4 +109,17 @@
         </plugins>
     </build>
 
+    <!-- 定义snapshots库和releases库的nexus地址 -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>com.chenggongdu</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>com.chenggongdu</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>

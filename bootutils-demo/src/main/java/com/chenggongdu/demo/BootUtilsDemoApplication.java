@@ -9,5 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BootUtilsDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(BootUtilsDemoApplication.class);
+        log.info("""
+                =========================
+                BootUtilsDemoApplication is running!
+                ==========================
+                swagger: http://localhost:8080/doc.html
+                """);
     }
 }

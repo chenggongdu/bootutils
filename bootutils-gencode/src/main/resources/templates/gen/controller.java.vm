@@ -12,7 +12,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
-import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +43,7 @@ public class ${upperClassName}Controller {
      */
     @Operation(summary = "分页查询", description = "分页查询")
     @PostMapping("/page")
-    public ResultPage<${upperClassName}Vo> page(@RequestBody @Validated PageQuery pageQuery,
-                                                @RequestBody @Validated ${upperClassName}Bo ${lowerClassName}Bo) {
+    public ResultPage<${upperClassName}Vo> page(PageQuery pageQuery, @Validated ${upperClassName}Bo ${lowerClassName}Bo) {
 
         return ResultPage.build(${lowerClassName}Service.pageByBo(pageQuery, ${lowerClassName}Bo));
     }
