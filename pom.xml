@@ -123,6 +123,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <!--staging puglin,用于自动执行发布阶段(免手动)-->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
@@ -130,8 +131,8 @@
                 <version>1.6.13</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>chenggongdu</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
@@ -148,14 +149,15 @@
     <!-- 定义snapshots库和releases库的nexus地址 -->
     <distributionManagement>
         <snapshotRepository>
-            <id>chenggongdu</id>
+            <id>ossrh</id>
             <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>chenggongdu</id>
+            <id>ossrh</id>
             <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
 </project>
