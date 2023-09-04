@@ -46,21 +46,19 @@ springboot 3.13 hutool 5.8.21
 ```
 #### 使用说明
 
-1.  代码生成器: 面向单一原则的代码生成，依赖springboot3 和 openapi3
+##### 代码生成
+面向单一原则的代码生成，依赖springboot3 和 openapi3
+
+- 如何快速测试
+1. git clone https://github.com/chenggongdu/bootutils.git
+2. bootutils-demo有快速使用例子，代码的生成的参考com.chenggongdu.demo.GenCodeTest
+- 生成目录结构说明
+  ![目录](static/iShot_2023-09-04_22.40.34.png)
     
 
 #### 参与贡献
+欢迎小伙伴提交issue和pr
 
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+[github]https://github.com/chenggongdu/bootutils
+[gitee]https://gitee.com/Edon-Du/bootutils
 
-#### 特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5. Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
